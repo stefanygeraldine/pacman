@@ -40,7 +40,7 @@
 
     function setSlice(value) {
       inputValue = value;
-      sliceElement.style.background =  ` conic-gradient(black 0deg ${percetageToDeg(inputValue)}deg, transparent ${percetageToDeg(inputValue)}deg 360deg)`;
+      sliceElement.style.background =  ` conic-gradient(yellow 0deg ${percetageToDeg(inputValue)}deg, transparent ${percetageToDeg(inputValue)}deg 360deg)`;
 
     }
 
@@ -136,12 +136,12 @@
 
     .slice{
         position: absolute;
-        background-color: yellow;
+        background-color: black;
         left: 0;
         top:0;
 
-        width: 500px;
-        height: 500px;
+        width: 400px;
+        height: 400px;
     }
 
     .container{
@@ -156,9 +156,10 @@
         overflow: hidden;
         position: relative;
         font-size: 0;
-        width: 500px;
-        height: 500px;
-        background-color: yellow;
+        width: 400px;
+        height: 400px;
+        background-color: black;
+        border: solid 2px yellow;
         border-radius: 50%;
         margin: 1rem;
     }
