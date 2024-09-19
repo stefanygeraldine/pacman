@@ -1,0 +1,173 @@
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Speed Challenge</title>
+</head>
+<body>
+<h1>Cyber Speed Challenge</h1>
+<h3>Stefany Carballo</h3>
+<div class="container">
+
+       <div class="pacman">
+           <div class="smile"></div>
+       </div>
+    <div class="container-chart">
+        <div>
+            <input placeholder="25%" type="number" id="value" class="input" min="0" max="100">
+        </div>
+        <div class="circle">
+            <div class="slice" id="slice"></div>
+        </div>
+    </div>
+
+        <div class="pacman left">
+            <div class="smile"></div>
+        </div>
+
+</div>
+</body>
+<script>
+    const inputElement = document.getElementById('value');
+    const sliceElement = document.getElementById('slice');
+    let inputValue = 25;
+
+    function percetageToDeg(porcentaje) {
+      return (porcentaje / 100) * 360;
+    }
+
+    function setSlice(value) {
+      inputValue = value;
+      sliceElement.style.background =  ` conic-gradient(black 0deg ${percetageToDeg(inputValue)}deg, transparent ${percetageToDeg(inputValue)}deg 360deg)`;
+
+    }
+
+    inputElement.addEventListener("keyup", (event) => {
+      setSlice(event.target.value);
+    });
+
+    setSlice(inputValue);
+
+
+</script>
+<style>
+    body{
+        text-align: center ;
+        color: white;
+        font-family: "Nunito", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        background-image: url("https://i.pinimg.com/736x/7f/5a/4a/7f5a4a49a95cb6f654588ffb351a2965.jpg");
+    }
+    @keyframes conicGradientAnimation {
+        0% {
+            background: conic-gradient(black 0deg 10deg, transparent 10deg 360deg);
+        }
+        50% {
+            background: conic-gradient(black 0deg 90deg, transparent 90deg 360deg);
+        }
+        100% {
+            background: conic-gradient(black 0deg 10deg, transparent 10deg 360deg);
+        }
+    }
+    @keyframes rotateAnimation {
+        0% {
+            transform: rotate(90deg);
+        }
+        50% {
+            transform: rotate(45deg);
+        }
+        100% {
+            transform: rotate(90deg);
+        }
+    }
+    .container-chart{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input{
+        margin: 2rem;
+        background-color: #00f3ff;
+        padding: 1rem 3rem;
+        width: 300px;
+        border-radius: 45px;
+        border: solid 7px #fd9ccf;
+
+        color: gray;
+        font-family: "Nunito", sans-serif;
+        font-size: 2rem;
+        font-style: normal;
+    }
+    .left{
+    transform: scaleX(-1);
+    }
+    .pacman{
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        background-color: #fd9ccf;
+        border-radius: 50%;
+    }
+    .smile{
+        position: absolute;
+        background-color: #fd9ccf;
+        left: 0px;
+        top:0;
+
+        width: 200px;
+        height: 200px;
+
+        animation: conicGradientAnimation 2s infinite, rotateAnimation 2s infinite;;
+    }
+    .smile:before{
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #0e0e0e;
+        left: 61px;
+        bottom: 163px;
+        border-radius: 50%;
+    }
+
+    .slice{
+        position: absolute;
+        background-color: yellow;
+        left: 0;
+        top:0;
+
+        width: 500px;
+        height: 500px;
+    }
+
+    .container{
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: auto;
+    }
+
+    .circle{
+        overflow: hidden;
+        position: relative;
+        font-size: 0;
+        width: 500px;
+        height: 500px;
+        background-color: yellow;
+        border-radius: 50%;
+        margin: 1rem;
+    }
+
+    @media (min-width: 1024px) {
+        .container {
+            flex-direction: row;
+            height: 70vh;
+        }
+    }
+</style>
+</html>
